@@ -1,7 +1,6 @@
 
 <!doctype html>
 <html lang="en">
-  
   <head>
     {% load static %}
     <meta charset="utf-8">
@@ -9,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.6">
-    <title>Portfolio</title>
+    <title>Asad's Blog</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/album/">
 
@@ -48,71 +47,61 @@
   </head>
   <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="{% url 'home' %}">AL Asad Khan</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="https://www.linkedin.com/in/asad22376/">LinkedIn</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% static 'finalCV.pdf' %}">Resume</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'allblogs' %}">
-                    Blog
-                  </a>
-                
-                </li>
-                
-              </ul>
-              <form class="form-inline my-2 my-lg-0">
-                <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
-              </form>
-            </div>
-          </nav>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'home' %}">AL Asad Khan</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.linkedin.com/in/asad22376/">LinkedIn</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% static 'finalCV.pdf' %}">Resume</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'allblogs' %}">
+                Blog
+              </a>
+            
+            </li>
+            
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+          </form>
+        </div>
+      </nav>
 </header>
 
 <main role="main">
 
-  <section class="jumbotron text-center">
     <div class="container">
-      <h1>Hi, I'm Asad</h1>
-      <p class="lead text-muted">Good to have you here</p>
-      <p>
-        <a href="mailto:asad22376@outlook.com" class="btn btn-primary my-2">Email Me</a>
-      </p>
-      <img src="{% static 'asad.jpg' %}" class="img-fluid"
-      width="500" height="auto">
-    </div>
-  </section>
 
-  <div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row">
+        <h1 class="text-center pt-2">Welcome to my Blog</h1><br>
+        <br><h2>Latest Posts</h2>
+        <hr>
+        {% for blog in blogs.all %}
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="row p-4 d-flex flex-column position-static">
 
-        {% for job in jobs.all %}
-
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-
-            <img src="{{ job.image.url }}" class="card-img-top"> 
-            <div class="card-body">
-              <p class="card-text">{{ job.summary }}</p>
-
+              <h3 class="mb-0">{{ blog.title }}</h3><br>
+              <div class="mb-1 text-muted">{{ blog.pub_date }}</div>
+              <p class="card-text mb-auto"  xzc>{{ blog.body }}</p>
+              <a href="{% url 'detail' blog.id %}" class="stretched-link">Continue reading</a>
             </div>
-          </div>
-        </div>
+            <div class="row-auto d-none d-lg-block">
+                <img src="{{ blog.image.url }}" class="img-fluid max-width= 100% height= auto ">
+<!-- card-img-right img-fluid rounded float-right img-thumbnail  -->
+            </div>
+        </div><br>
         {% endfor %}
 
-        </div>
+        
     </div>
-  </div>
 
 </main>
 
