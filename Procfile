@@ -1,1 +1,1 @@
-web: gunicorn home:app --timeout 90
+web: gunicorn Portfolio.wsgi
