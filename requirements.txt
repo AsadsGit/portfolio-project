@@ -28,7 +28,7 @@ lazy-object-proxy==1.4.3
 louis==3.5.0
 mccabe==0.6.1
 netifaces==0.10.4
-numpy==1.18.1
+numpy==1.22.0
 olefile==0.45.1
 onboard==1.4.1
 pandas==0.25.3
